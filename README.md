@@ -53,7 +53,7 @@ Coming soon on [https://jobconnect.vercel.app](https://jobconnect.vercel.app)
 ## 👨‍💼 Developer
 
 **Priyanshu Raj Mishra**  
-B.Tech CSE, BIT Mesra  
+B.Tech ECE, BIT Mesra  
   [GitHub](https://github.com/priyanshu12-stack)
 
 ---
