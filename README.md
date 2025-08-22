@@ -45,7 +45,7 @@ npm run dev
 
 ## 🌐 Live Demo
 
-Coming soon on[ [https://jobconnect.vercel.app](https://jobconnect.vercel.app) ](https://mern-project-job-portal.vercel.app/) 
+Coming soon on[(https://mern-project-job-portal.vercel.app/) ]
 
 
 ---
