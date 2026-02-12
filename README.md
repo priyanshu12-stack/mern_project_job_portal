@@ -19,7 +19,7 @@ A complete full-stack job portal where users can register, login, search and app
 
 | Frontend        | Backend        | Database   | Hosting       |
 |----------------|----------------|------------|----------------|
-| React.js        | Node.js         | MongoDB     | Vercel (Frontend) |
+| React.js        | Node.js         | MongoDB     | Render (Frontend) |
 | React Router    | Express.js      | Mongoose    | Render (Backend)  |
 | Tailwind CSS (optional) | JWT Auth       |              | MongoDB Atlas     |
 
@@ -45,7 +45,7 @@ npm run dev
 
 ## 🌐 Live Demo
 
-Coming soon on[(https://mern-project-job-portal.vercel.app/) ]
+https://mern-project-job-portal.onrender.com
 
 
 ---
