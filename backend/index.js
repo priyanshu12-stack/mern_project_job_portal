@@ -21,7 +21,7 @@ app.use(cookieParser());
 const corsOptions = {
     origin: [
         "http://localhost:5173", // local frontend
-        "https://mern-project-job-portal.onrender.com/" // 🔥 replace later with real frontend URL
+        "https://mern-project-job-portal.onrender.com" // 🔥 replace later with real frontend URL
     ],
     credentials: true
 };
