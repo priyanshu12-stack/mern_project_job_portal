@@ -47,9 +47,6 @@ const CompanySetup = () => {
         try {
             setLoading(true);
             const res = await axios.put(`${COMPANY_API_END_POINT}/update/${params.id}`, formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
                 withCredentials: true
             });
             if (res.data.success) {
@@ -58,7 +55,7 @@ const CompanySetup = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.message);
+            toast.error(error?.response?.data?.message || error.message || "Something went wrong.");
         } finally {
             setLoading(false);
         }

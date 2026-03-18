@@ -20,7 +20,8 @@ app.use(cookieParser());
 // ✅ UPDATED CORS CONFIG (IMPORTANT)
 const corsOptions = {
     origin: [
-        "http://localhost:5173", // local frontend
+        "http://localhost:5173", // local frontend default Vite port
+        "http://localhost:5174", // Vite sometimes uses 5174 if 5173 is busy
         "https://mern-project-job-portal.onrender.com" // 🔥 replace later with real frontend URL
     ],
     credentials: true

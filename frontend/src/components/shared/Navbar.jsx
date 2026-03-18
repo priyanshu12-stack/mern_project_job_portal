@@ -25,71 +25,73 @@ const Navbar = () => {
             }
         } catch (error) {
             console.log(error);
-            toast.error(error.response.data.message);
+            toast.error(error?.response?.data?.message || error.message || "Something went wrong.");
         }
     }
     return (
-        <div className='bg-white'>
-            <div className='flex items-center justify-between mx-auto max-w-7xl h-16'>
-                <div>
-                    <h1 className='text-2xl font-bold'>Job<span className='text-[#F83002]'>Portal</span></h1>
-                </div>
-                <div className='flex items-center gap-12'>
-                    <ul className='flex font-medium items-center gap-5'>
+        <div className='bg-white shadow-md sticky top-0 z-50'>
+            <div className='flex items-center justify-between mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 h-16'>
+                <Link to="/">
+                    <h1 className='text-2xl sm:text-3xl font-bold tracking-tight'>
+                        Job<span className='text-[#001f3f]'>Portal</span>
+                    </h1>
+                </Link>
+                <div className='flex items-center gap-8'>
+                    <ul className='hidden md:flex font-medium items-center gap-8'>
                         {
                             user && user.role === 'recruiter' ? (
                                 <>
-                                    <li><Link to="/admin/companies">Companies</Link></li>
-                                    <li><Link to="/admin/jobs">Jobs</Link></li>
+                                    <li><Link to="/admin/companies" className='text-gray-700 hover:text-[#001f3f] transition-colors duration-300'>Companies</Link></li>
+                                    <li><Link to="/admin/jobs" className='text-gray-700 hover:text-[#001f3f] transition-colors duration-300'>Jobs</Link></li>
                                 </>
                             ) : (
                                 <>
-                                    <li><Link to="/">Home</Link></li>
-                                    <li><Link to="/jobs">Jobs</Link></li>
-                                    <li><Link to="/browse">Browse</Link></li>
+                                    <li><Link to="/" className='text-gray-700 hover:text-[#001f3f] transition-colors duration-300'>Home</Link></li>
+                                    <li><Link to="/jobs" className='text-gray-700 hover:text-[#001f3f] transition-colors duration-300'>Jobs</Link></li>
+                                    <li><Link to="/browse" className='text-gray-700 hover:text-[#001f3f] transition-colors duration-300'>Browse</Link></li>
                                 </>
                             )
                         }
-
-
                     </ul>
                     {
                         !user ? (
-                            <div className='flex items-center gap-2'>
-                                <Link to="/login"><Button variant="outline">Login</Button></Link>
-                                <Link to="/signup"><Button className="bg-[#6A38C2] hover:bg-[#5b30a6]">Signup</Button></Link>
+                            <div className='flex items-center gap-3'>
+                                <Link to="/login"><Button variant="outline" className="border-[#001f3f] text-[#001f3f] hover:bg-[#001f3f] hover:text-white">Login</Button></Link>
+                                <Link to="/signup"><Button className="bg-[#001f3f] hover:bg-[#003d7a] text-white font-semibold">Signup</Button></Link>
                             </div>
                         ) : (
                             <Popover>
                                 <PopoverTrigger asChild>
-                                    <Avatar className="cursor-pointer">
-                                        <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
+                                    <Avatar className="cursor-pointer hover:ring-2 hover:ring-[#001f3f] transition-all duration-300">
+                                        <AvatarImage src={user?.profile?.profilePhoto} alt={user?.fullname} />
                                     </Avatar>
                                 </PopoverTrigger>
-                                <PopoverContent className="w-80">
+                                <PopoverContent className="w-80 shadow-xl">
                                     <div className=''>
-                                        <div className='flex gap-2 space-y-2'>
-                                            <Avatar className="cursor-pointer">
-                                                <AvatarImage src={user?.profile?.profilePhoto} alt="@shadcn" />
+                                        <div className='flex gap-3 space-y-2 mb-4'>
+                                            <Avatar className="cursor-pointer h-12 w-12">
+                                                <AvatarImage src={user?.profile?.profilePhoto} alt={user?.fullname} />
                                             </Avatar>
                                             <div>
-                                                <h4 className='font-medium'>{user?.fullname}</h4>
-                                                <p className='text-sm text-muted-foreground'>{user?.profile?.bio}</p>
+                                                <h4 className='font-bold text-lg'>{user?.fullname}</h4>
+                                                <p className='text-sm text-gray-500'>{user?.profile?.bio || "User"}</p>
                                             </div>
                                         </div>
-                                        <div className='flex flex-col my-2 text-gray-600'>
-                                            {
-                                                user && user.role === 'student' && (
-                                                    <div className='flex w-fit items-center gap-2 cursor-pointer'>
-                                                        <User2 />
-                                                        <Button variant="link"> <Link to="/profile">View Profile</Link></Button>
-                                                    </div>
-                                                )
-                                            }
+                                        <div className='border-t pt-4'>
+                                            <div className='flex flex-col gap-3 text-gray-700'>
+                                                {
+                                                    user && user.role === 'student' && (
+                                                        <div className='flex w-fit items-center gap-2 cursor-pointer hover:text-[#001f3f] transition-colors duration-300'>
+                                                            <User2 className='h-4 w-4' />
+                                                            <Link to="/profile" className='font-medium'>View Profile</Link>
+                                                        </div>
+                                                    )
+                                                }
 
-                                            <div className='flex w-fit items-center gap-2 cursor-pointer'>
-                                                <LogOut />
-                                                <Button onClick={logoutHandler} variant="link">Logout</Button>
+                                                <div className='flex w-fit items-center gap-2 cursor-pointer hover:text-red-600 transition-colors duration-300'>
+                                                    <LogOut className='h-4 w-4' />
+                                                    <button onClick={logoutHandler} className='font-medium'>Logout</button>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
