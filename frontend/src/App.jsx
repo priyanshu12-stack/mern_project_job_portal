@@ -66,10 +66,14 @@ const appRouter = createBrowserRouter([
     path:"/admin/jobs/create",
     element:<ProtectedRoute><PostJob/></ProtectedRoute> 
   },
-  {
+ {
+    path:"/admin/jobs/:id",
+    element:<ProtectedRoute><PostJob/></ProtectedRoute> 
+},
+{
     path:"/admin/jobs/:id/applicants",
     element:<ProtectedRoute><Applicants/></ProtectedRoute> 
-  },
+},
 
 ])
 function App() {
