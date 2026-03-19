@@ -12,10 +12,7 @@ dotenv.config();
 
 const app = express();
 
-// middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-app.use(cookieParser());
+
 
 // ✅ UPDATED CORS CONFIG (IMPORTANT)
 const corsOptions = {
@@ -28,6 +25,10 @@ const corsOptions = {
 };
 
 app.use(cors(corsOptions));
+// middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(cookieParser());
 
 const PORT = process.env.PORT || 3000;
 
